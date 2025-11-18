@@ -1,11 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Redirecting…</title>
-<meta http-equiv="refresh" content="0;url=http://75.43.130.61">
+<meta charset="UTF-8">
+<title>Redirector</title>
+<style>
+  body { font-family: Arial, sans-serif; display: flex; height: 100vh; justify-content: center; align-items: center; background: #111; color: #fff; }
+  input { padding: 10px; width: 300px; font-size: 16px; border-radius: 5px; border: none; }
+  button { padding: 10px 15px; font-size: 16px; margin-left: 5px; border-radius: 5px; border: none; cursor: pointer; background: #28a745; color: white; }
+</style>
 </head>
 <body>
-Redirecting… if not, <a href="http://75.43.130.61">click here</a>.
+  <div>
+    <input type="text" id="urlInput" placeholder="Enter URL (http:// or https://)" />
+    <button onclick="redirect()">Go</button>
+  </div>
+
+  <script>
+    function redirect() {
+      let url = document.getElementById('urlInput').value.trim();
+      if (!url) {
+        alert('Please enter a URL.');
+        return;
+      }
+
+      // If no protocol, default to http://
+      if (!/^https?:\/\//i.test(url)) {
+        url = 'http://' + url;
+      }
+
+      // Redirect in the same tab
+      location.href = url;
+    }
+
+    // Redirect on Enter key
+    document.getElementById('urlInput').addEventListener('keydown', function(e){
+      if (e.key === 'Enter') redirect();
+    });
+  </script>
 </body>
 </html>
