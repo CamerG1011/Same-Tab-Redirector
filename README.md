@@ -1,1 +1,1 @@
-https://same-tab-redirector.github.io
+https://camerg1011.github.io/Same-Tab-Redirector
